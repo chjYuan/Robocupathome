@@ -1,0 +1,23 @@
+#ROS HEADER
+Header header
+
+# SECONDS SINCE CONNECT (INTERNAL INTERFACE TIME. DON'T USE IT AS ROS TIME --use header instead--)
+float64 time_stamp
+
+# TM VERSION
+uint32 tm_version
+
+# V1_1: 7 bit		# V2_0: 14 bit   
+uint32 module_id
+
+# V1_1: t[0] = BMA150, t[1-6] = PT1000 # V2_0: t[0] = BMA250, t[1] = LM71
+sensor_msgs/Temperature[7] temp
+
+# V1_1: x,y,z   # V2_0: -y,x,z
+sensor_msgs/Imu acc
+
+# V1_1: p[0-3] = GP2S60[0-3]  # V2_0: p[0] = VCNL4010 prox
+sensor_msgs/Range[3] proximity
+
+# V1_1: -  # V2_0: f[0-2] = ForceCell[1-3]
+geometry_msgs/Wrench[3] wrench

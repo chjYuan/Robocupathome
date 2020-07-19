@@ -1,0 +1,3 @@
+# Msg to store the neghbors list for each cell
+int64 own_id
+int64[4] neighbor_id

@@ -1,0 +1,14 @@
+<launch>
+ 
+  <!--node pkg="rosbag"
+  type="play"
+  name="player"
+  args=" !!!!!!rate=1 -l $(find plane_segmentation)/bag/tiago_recording.bag" /-->
+  
+  <include file="$(find darknet_ros)/launch/darknet_ros.launch">
+    <arg name="image" value="/xtion/rgb/image_raw" />
+  </include>
+  <node name="object_recognition" pkg="object_detection" type="objectRecognition" output="screen"/>
+  <!--node name="from2dto3d" pkg="from2Dto3D" type="from2dto3d" output="screen"/-->
+  <!--rosparam command="load" file="$(find from2Dto3D)/config/objectname.yaml"/-->
+</launch>

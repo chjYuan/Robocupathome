@@ -1,0 +1,5 @@
+int8 req
+---
+geometry_msgs/Point doorshaft_res
+geometry_msgs/Point handle_res
+float64  theta_res

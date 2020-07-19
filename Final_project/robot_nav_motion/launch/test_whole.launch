@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+ 
+  <node name="test_whole" pkg="robot_nav_motion" type="test_whole"  output="screen"/>
+
+</launch>

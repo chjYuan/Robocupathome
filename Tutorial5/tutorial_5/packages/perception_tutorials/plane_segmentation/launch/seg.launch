@@ -1,0 +1,8 @@
+<launch>
+  <node pkg="rosbag"
+  type="play"
+  name="player"
+  args=" --rate=1 -l $(find plane_segmentation)/bag/tiago_recording.bag" />
+  <node name="rviz_window" pkg="rviz" type="rviz" args="-d $(find plane_segmentation)/rviz/seg.rviz"/>
+  <node name="seg_node" pkg="plane_segmentation" type="plane_segmentation" args="-d $(find plane_segmentation)/rviz/seg.rviz"/>
+</launch>

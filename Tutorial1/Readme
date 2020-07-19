@@ -1,0 +1,38 @@
+Answers to the questions(Exercise 3) 
+1.
+Fisrt method: Using the ros servicecall  
+command:
+$ rosservice call /TurtlePose " {x: 1.5, y: 1.0, theta: 0.0}"
+There is a service in Node 1, using this kind of method, we can directly call the service in terminal directly. i.e. we can directly send the desired pose to the service which needs the new desired pose.  
+
+Second method: Using the client to call the service
+command:
+$ rosrun turtle_vis turtle_set_position 
+then follow the instruction, type the desired poistion (x,y,theta) in the terminal.
+Client can be used to give the request data to the service. In our case, Client are set in the Node"turtle_set_position", using this node we can achieve the function that we send the new desired pose to the service.
+
+
+2. Publisher/Subcriber is used for the topics which are suitable for the continuous data streams and the topics are asynchronous node communication protocols used in ROS, in this case the data cannot be obtained "on request", while the Server/Client is used for remote procedure call and belongs to synchronous communication ,in this case the data which the server needs can be received only by the request.
+If we replace the service with a subscriber,we need to add the desired pose in the code where we need to publish it, and we will get continuous information of the deisred pose of the turtle. In this case, we cannot give the desired pose on request or on a remote call, each time when we need to send the desired pose, we have to change the code.  
+
+
+
+INSTRUCTIONS TO RUN THE PROGRAM(Readme)
+
+1) run $ catkin_make in the workspace "roboCupHome_tutorial_ChengjieYuan" to make sure there is no problem with the workspace(in the directory where the floder "src" is) 
+
+2) source the setup.bash file in the workspace ($ source devel/setup.bash)
+
+3) $ roslaunch turtle_vis TurtleVis.launch
+   #launch the total program
+
+4) $ rosservice call /TurtlePose " {x: 1.5, y: 1.0, theta: 1.57}"
+   #call the service directly and visualize the positon change of the turtle
+
+5) $ rosrun turtle_vis turtle_set_position
+   #launch the client node to call the service by the client
+
+6) follow the instructions showed on the terminal "Give me the desired position of the turtle: x,y,theta"
+   #type the desired pose that you defined yourself in the form "x,y,theta" 
+   #e.g. 1.5,2.0,3.14 
+

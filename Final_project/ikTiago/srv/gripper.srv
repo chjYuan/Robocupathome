@@ -1,0 +1,4 @@
+geometry_msgs/Point gripper_req
+float64 theta
+---
+bool response

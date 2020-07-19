@@ -1,0 +1,22 @@
+# Number of segments
+int64 num_segs
+# Number of Skin Cells
+int64 num_cells
+#Number of Patches
+int64 num_patches
+
+#Segment Patch Array (even = segments IDs, odd = patch IDs)
+int64[] segment_patch_array
+
+#Defines the skin Cell clusters per Patches (even = patchIDs, odd = Skin Cell IDs)
+int64[] patch_cell_array
+
+#Defines the root cell (reference cell ID) for each Patch (even =patchIDs, odd = root skin cell ID)
+int64[] patch_ref_cell_array
+
+#Defines the reference skin Cell (root cell) for each patch
+SkinCellNeighbors[] cell_nlist
+
+#List of relative poses for each cell with respec to the cell root
+geometry_msgs/Transform[] cell_rel_pose_list
+

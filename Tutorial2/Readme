@@ -1,0 +1,74 @@
+EXERCISE 1
+Robot: Tiago
+Package(needed) list:
+"ics_gazebo"
+"tiago"
+Instructions:
+1.Add the package "ics_gazebo" and "tiago" into the workspace i.e. the /src directory, then back to the directory where the src folder is and compile the package by using 
+  $ catkin_make
+2.When finishing the compile, using the following command in the directory where the src, build,devel folders are.
+  $ source devel/setup.bash
+3.$ roslaunch ics_gazebo tiago.launch world_suffix:=tutorial2
+
+
+EXERCISE 2
+Robot: Tiago
+Package(needed) list:
+"ics_gazebo"
+"tiago"
+Instructions:
+1.Using the following command in the workspace directory where the src, build,devel folders are.
+  $ source devel/setup.bash
+2.$ roslaunch ics_gazebo tiago.launch
+
+
+EXERCISE 3
+Robot: Tiago
+Package(needed) list:
+"ics_gazebo"
+"tiago"
+"turtle_vis"
+Instructions:
+1.Add the package "ics_gazebo" "tiago" and "turtle_vis" into the workspace i.e. the /src directory, then back to the directory where the src folder is and compile the package by using 
+  $ catkin_make
+2.When finishing the compile, using the following command in the directory where the src, build,devel folders are.
+  $ source devel/setup.bash
+  $ roslaunch ics_gazebo tiago.launch
+3.When opening the gazebo and the rivz and seeing the robot in an empty world, run the next command in another terminal in the workspace to start the control node:
+  $ source devel/setup.bash
+  $ rosrun turt_vis turtle_control
+  You will see the current position of the robot is printed on the terminal.
+4. Open a new terminal in the workspace and run the following command:
+  $ source devel/setup.bash
+  $ rosrun turtle_vis turtle_set_position
+  Now you will see an instruction "Give me the desired position of the turtle: x_desired,y_desired,theta"
+  Then give the desired pose to the robot using the form "x,y,theta"
+  e.g. "1.0,1.0,1.57"
+In this control method, only the x,y position can be controlled because only the errors of x,y position are used as the input of the controller i.e. the DOF of the controller is two. As a result, the yaw of the robot cannot be controlled. because the reference point can be everywhere on a circle around the desired pose with 0.3 radius as the orientation of the robot is uncontrolled.
+What's more, we set x,y,theta in the client, the theta is only used to locate the reference point which we need but unable to be controlled. 
+As we are using the reference point to control. The result will show you where the robot will stop, and the final desired position is dependent on the reference point which can be calculated by these three parameters (x,y)=(x_desired+0.3*cos(theta),y_desired+0.3sin(theta)). That means the simulation result will only show the control of the position of reference point.
+  
+
+EXERCISE 4
+Robot: Tiago
+Package(needed) list:
+"ics_gazebo"
+"tiago"
+"turtle_vis"
+"controllers_tutorials"
+Instructions:
+1.Add the package "ics_gazebo" "tiago" "turtle_vis" and "controllers_tutorials" into the workspace i.e. the /src directory, then back to the directory where the src folder is and compile the package by using 
+  $ catkin_make
+2.When finishing the compile, using the following command in the directory where the src, build,devel folders are.
+  $ source devel/setup.bash
+  $ roslaunch ics_gazebo tiago.launch
+3.When opening the gazebo and the rivz and seeing the robot in an empty world, run the next command in another terminal:
+  $ source devel/setup.bash
+  $ rosrun controller_manager controller_manager kill torso_controller
+  You will see this information:"Stopped ['torso_controller'] successfully
+                                 Unloaded torso_controller successfully"
+4.run the command:
+  $ roslaunch controllers_tutorials new_torso_controller.launch 
+When this command works, you will see the tiago moves up and down continuously.
+  
+

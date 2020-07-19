@@ -1,0 +1,4 @@
+# ARRAY of simplified skin cell data (only prox and max_force)
+Header header
+
+SimplifiedSkinCell[] skin_cell 

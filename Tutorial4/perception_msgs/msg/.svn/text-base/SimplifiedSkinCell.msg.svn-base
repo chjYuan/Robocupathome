@@ -1,0 +1,5 @@
+# Proximity
+float64 proximity
+
+# Force
+float64 max_force

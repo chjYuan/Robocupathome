@@ -1,0 +1,10 @@
+<launch>
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find tiago_description)/robots/tiago.urdf.xacro'"/>
+    <param name="urdf_param" value="/robot_description"/>
+    <node name="ikTiago" pkg="ikTiago" type="ikTiago" output="screen">
+    </node>
+    <node name="little_move" pkg="ikTiago" type="little_move" output="screen">    
+    </node>
+    <node name="openwide" pkg="ikTiago" type="openwide" output="screen">
+    </node>
+</launch>

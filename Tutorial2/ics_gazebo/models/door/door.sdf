@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+    <model name="door">
+        <pose>0 0 0 1.5708 0 0</pose>
+  
+        <link name="door_frame">
+            <inertial>
+                <pose>0.525 1 0.05 0 0 0</pose>
+                <mass>30.0</mass>
+                <inertia>
+                    <ixx>1</ixx>       
+                    <ixy>0.0</ixy>         
+                    <ixz>0.0</ixz>         
+                    <iyy>1</iyy>       
+                    <iyz>0.0</iyz>         
+                    <izz>1</izz>       
+                </inertia>
+            </inertial>
+      
+            <visual name="visual_frame">
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://door/meshes/frame.stl</uri>                      
+	                    <scale>0.1 0.1 0.1</scale>  <!-- TODO:   Find a proper scale for the mesh -->
+                    </mesh>
+                </geometry>
+            </visual>
+
+            <!-- TODO: Create a "collision" entry with the same geometry than the "visual" entry.-->
+             <collision name="collision_frame">
+                <pose>0 0 0 0 0 0</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://door/meshes/frame.stl</uri>
+	                    <scale>0.1 0.1 0.1</scale>
+                    </mesh>
+                </geometry>
+            </collision>        
+
+        </link>
+  
+        <link name="door_body">
+            <inertial>
+                <pose>0.525 1 0.05 0 0 0</pose>
+                <mass>1.0</mass>
+                <inertia> 
+                    <ixx>0.083</ixx>       
+                    <ixy>0.0</ixy>         
+                    <ixz>0.0</ixz>         
+                    <iyy>0.083</iyy>       
+                    <iyz>0.0</iyz>         
+                    <izz>0.083</izz>       
+                </inertia>
+            </inertial>
+      
+            <collision name="collision_door">
+                <pose>0.525 0.995 0.05 0 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>0.9 1.99 0.03</size>
+                    </box>
+                </geometry>
+            </collision>
+      
+            <visual name="visual_door">
+                <pose>0.525 0.995 0.05 0 0 0</pose>
+                <geometry>
+                    <box>
+                        <size>0.9 1.99 0.03</size>
+                    </box>
+                </geometry>
+            </visual>
+        </link>
+
+        <link name="door_handle">
+            <inertial>
+                <pose>0.8 1.0 0.15 3.1416 0 0</pose>
+                <mass>1.0</mass>
+                <inertia> 
+                    <ixx>1</ixx>       
+                    <ixy>0.0</ixy>         
+                    <ixz>0.0</ixz>         
+                    <iyy>1</iyy>       
+                    <iyz>0.0</iyz>         
+                    <izz>1</izz>       
+                </inertia>
+            </inertial>
+      
+            <visual name="visual_handle">
+
+                <!-- TODO:   Find proper xyz and RPY values-->
+                <pose>0.8 1.0 0.15 3.14 0 -1.57</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://door/meshes/handle.stl</uri>
+	                    <scale>0.001 0.001 0.001</scale>   <!-- TODO:   Find a proper scale for the mesh -->
+                    </mesh>
+                </geometry>
+            </visual>
+
+            <!-- TODO: Create a "collision" entry with the same geometry than the "visual" entry.-->  
+             <collision name="collision_handle">
+                <pose>0.8 1.0 0.15 3.14 0 1.57</pose>
+                <geometry>
+                    <mesh>
+                        <uri>model://door/meshes/handle.stl</uri>
+	                     <scale>0.001 0.001 0.001</scale>
+                    </mesh>
+                </geometry>
+             </collision>      
+
+        </link>
+
+
+        <!-- TODO: Create a "joint" relation between door_body and door_handle. Define the mandatory elements and coherent limits.-->        
+        <joint name="door_handle" type="revolute">
+            <parent>door_body</parent>
+            <child>door_handle</child>
+            <pose>0.8 1.0 0.15 3.14 0 1.57</pose>
+            <axis>
+                <xyz>0 0 1</xyz>
+                <dynamics>
+                    <damping>0.1</damping>
+                    <friction>0.1</friction>
+                </dynamics>
+                 <limit>
+                    <lower>0</lower>
+                    <upper>1.57</upper>   <!-- give the limit that the handle can be rotated to open the door but has a limt angle of 1.57 rad -->
+                </limit>
+                <!-- TODO: Define coherent limits for this joint. -->
+
+            </axis>
+        </joint>
+        
+                
+        <joint name="door_hinge" type="revolute">
+            <parent>door_frame</parent>
+            <child>door_body</child>
+            <pose>0.075 0 0.065 0 0 0</pose>
+            <axis>
+                <xyz>0 1 0</xyz>
+                <dynamics>
+                    <damping>0.1</damping>
+                    <friction>0.1</friction>
+                </dynamics>
+  
+                <!-- TODO: Define coherent limits for this joint. -->
+            <limit>
+                    <lower>-2.19</lower>
+                    <upper>2.19</upper>    <!-- give the limit that the door can be pushed to open but has a limt angle of 2.19rad -->
+                </limit>
+            </axis>
+        </joint>
+
+        <joint name="world_joint" type="revolute">
+            <child>door_frame</child>
+            <parent>world</parent>
+            <axis>
+                <limit>
+                    <lower>0</lower>
+                    <upper>0</upper>
+                </limit>
+                <xyz>0 1 0</xyz>
+                <dynamics>
+                    <damping>1.0</damping>
+                </dynamics>
+                <use_parent_model_frame>true</use_parent_model_frame>
+            </axis>
+            <physics>
+                <ode>
+                    <cfm_damping>1</cfm_damping>
+                </ode>
+            </physics>
+        </joint>
+       
+    </model>
+</sdf>

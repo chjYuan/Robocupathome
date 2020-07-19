@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="segment_table" pkg="plane_segmentation" type="PlaneSegmentation" output="screen"> 
+  </node>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find plane_segmentation)/config/pcl_segment_table.rviz"/>
+</launch>

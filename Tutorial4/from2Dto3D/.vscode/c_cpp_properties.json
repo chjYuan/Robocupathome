@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "",
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "includePath": [
+                "/home/athomews1920/ros/workspace/congw_ws/devel/include/**",
+                "/opt/ros/kinetic/include/**",
+                "/home/athomews1920/ros/workspace/congw_ws/src/congw/darknet_ros/darknet_ros/include/**",
+                "/home/athomews1920/ros/workspace/congw_ws/src/congw/perception_tutorials/from2Dto3D/include/**",
+                "/home/athomews1920/ros/workspace/congw_ws/src/congw/perception_tutorials/object_recognition/include/**",
+                "/home/athomews1920/ros/workspace/congw_ws/src/congw/perception_tutorials/plane_segmentation/include/**",
+                "/opt/ros/kinetic/share/tmc_julius/include/**",
+                "/opt/ros/kinetic/share/tmc_object_segmentation_node/include/**",
+                "/usr/include/**"
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}

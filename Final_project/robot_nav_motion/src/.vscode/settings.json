@@ -1,0 +1,7 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/athomews1920/ros/SZE/devel/lib/python2.7/dist-packages",
+        "/home/athomews1920/ros/workspace/tiago_ws/devel/lib/python2.7/dist-packages",
+        "/opt/ros/kinetic/lib/python2.7/dist-packages"
+    ]
+}

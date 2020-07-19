@@ -1,0 +1,9 @@
+new_torso_controller:
+                                 # The name of the controller that will apear on the controller_manager list
+
+  type: "controllers_tutorials/NewTorsoController"      # This must match the "class name" parameter on the controller_plugins.xml file
+  
+  joints:                                                       # Then, all the resources needed for the controller must be listed.
+   - torso_lift_joint
+
+  base_imu_sensor: base_imu

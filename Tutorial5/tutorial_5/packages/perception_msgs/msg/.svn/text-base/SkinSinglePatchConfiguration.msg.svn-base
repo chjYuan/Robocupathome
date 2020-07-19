@@ -1,0 +1,15 @@
+# Number of Skin Cells
+int64 num_cells
+
+#Defines the skin Cell elements in this parch
+int64[] patch_cell_array
+
+#Defines the root cell (reference cell ID) for the Patch
+int64 patch_ref_cell_array
+
+#Defines the reference skin Cell (root cell) for each patch
+SkinCellNeighbors[] cell_nlist
+
+#List of relative poses for each cell with respec to the cell root
+geometry_msgs/Transform[] cell_rel_pose_list
+

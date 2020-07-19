@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+
+<node pkg = "from2dto3d" name = "from2Dto3D" type = "from2dto3d" output ="screen" />
+
+</launch>
